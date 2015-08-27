@@ -1,6 +1,5 @@
-import oswalk
 import avail
-import all
+import index
 import search
 import os
 
@@ -9,7 +8,7 @@ print "Drives detected: %s" % (avail.get_available_drives())
 loc = avail.get_available_drives()
 loc2= avail.get_available_drives()
 
-choose = raw_input("Full index or single Drive?: ")
+choose = raw_input("Full index or single Drive?: ").lower()
 
 #add in some timeout thing so a update can be run automaticly
 
@@ -18,15 +17,17 @@ if os.path.exists("D:\\index\\index") == True:
 
     #add code to create file/folder if not found
 
-if choose == 's' or choose == 'single' : #or maybe add in S and Single or change it to just check for the s.
+if choose in ['s', 'single', 'o', 'one']:
     cloc = raw_input("What drive? eg C:\\ : ") #maybe get to handle C ect
     if cloc == 'exit': quit() #remove later
     print "Drive: %s selected" % (cloc)
     print "Rebuilding Index files. This may take several minutes.... " #maybe add progress ellipses
-    oswalk.build(cloc) #who needs error handling.
-else:
+    index.drive(cloc) #who needs error handling.
+elif choose in ['f', 'full','a', 'all']:
     print "Checking drives %s" % loc
-    all.index(loc,loc2)
+    index.all(loc,loc2)
+else:
+    print 'Choose a option that exists next time.'
 
 print "Complete"
 
@@ -34,6 +35,6 @@ print "Complete"
 
 #expand to more than just name search maybe stat()
 more= raw_input("\nSearch for something? ")
-if more == "yes" or more == "y": #maybe add Yes/Y
+if more in ['y', 'yes']:
     search.search()
 else: exit()
