@@ -14,8 +14,8 @@ choose = raw_input("Full index or single Drive?: ").lower()
 
 if os.path.exists("D:\\index\\index") == True:
     os.remove("D:\\index\\index")
-
-    #add code to create file/folder if not found
+elif os.path.exists("D:\\index") == False:
+    os.mkdir("D:\\index")
 
 if choose in ['s', 'single', 'o', 'one']:
     cloc = raw_input("What drive? eg C:\\ : ") #maybe get to handle C ect
@@ -34,7 +34,7 @@ print "Complete"
 #add option to search without rebuilding, stand alone
 
 #expand to more than just name search maybe stat()
-more= raw_input("\nSearch for something? ")
+more= raw_input("\nSearch for something? ").lower()
 if more in ['y', 'yes']:
     search.search()
 else: exit()
