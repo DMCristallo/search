@@ -1,11 +1,5 @@
-import os
 
 def search():
-
-    if os.path.exists("D:\\index\\index") == False:
-        print "Index not found."
-        quit()
-
     search = open("D:\\index\\index", "r")
 
     case= raw_input("Case sensitive? [Y]/[N] " ) #default case insensitive
