@@ -1,6 +1,12 @@
 from __future__ import print_function
+import os
+
 
 def all(loc,locc):
+
+    if os.path.exists("D:\\index\\index") == True:
+        os.remove("D:\\index\\index")
+
     print ("\nThis may take several minutes....")
     for x in locc:
         list=loc[0]+":\\"
@@ -10,8 +16,14 @@ def all(loc,locc):
         del loc[0]
 
 def drive(loc):
-    import os
     import glob
+
+    if os.path.exists("%s:\\" % (loc)) ==False:
+        print ("drive not found")
+        quit()
+
+    if os.path.exists("D:\\index\\index") == True:
+        os.remove("D:\\index\\index")
 
     os.chdir(loc)
     log = open("D:\\index\\index", "a")
