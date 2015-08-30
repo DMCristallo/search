@@ -9,6 +9,7 @@ loc = avail.get_available_drives()
 loc2= avail.get_available_drives()
 
 choose = raw_input("Full index or single Drive?: ").lower()
+if choose == 'exit': quit()
 
 #add in some timeout thing so a update can be run automaticly
 
@@ -23,11 +24,13 @@ if choose in ['s', 'single', 'o', 'one']:
     print "Drive: %s selected" % (cloc)
     print "Rebuilding Index files. This may take several minutes.... " #maybe add progress ellipses
     index.drive(cloc) #who needs error handling.
+
 elif choose in ['f', 'full','a', 'all']:
     print "Checking drives %s" % loc
     index.all(loc,loc2)
 else:
     print 'Choose a option that exists next time.'
+    quit()
 
 print "Complete"
 
@@ -38,3 +41,4 @@ more= raw_input("\nSearch for something? ").lower()
 if more in ['y', 'yes']:
     search.search()
 else: exit()
+
