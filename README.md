@@ -7,6 +7,7 @@ The program will list all the drives connected to the computer and create D:\ind
 Follow instructuions, this will overwrite the last index made!
 
 Search for file name or extention with or without case sensitivity.
+	dont search again for now...
 
 List of currently available commands: tba
 Command line arguments:
@@ -16,3 +17,7 @@ s --skips to search
 f --does a full index
 
 d X:\ --Indexs drive X
+
+b --makes a backup of the index
+
+b r --restores the backup
