@@ -1,6 +1,6 @@
 from __future__ import print_function
 import os
-
+import stat_e
 
 def all(loc,locc):
 
@@ -17,8 +17,10 @@ def all(loc,locc):
 
 def drive(loc):
     import glob
+    import avail
 
-    if os.path.exists("%s:\\" % (loc)) ==False:
+    drives=(avail.get_available_drives())
+    if loc[0] not in drives:
         print ("drive not found")
         quit()
 
@@ -37,3 +39,4 @@ def drive(loc):
         for f in files:
             fullpath = os.path.join(root, f)
             print (fullpath, file = log)
+           # print (stat_e.s1(fullpath))

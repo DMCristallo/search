@@ -7,6 +7,7 @@ def search():
         quit()
 
     search = open("D:\\index\\index", "r")
+    results=''
 
     case= raw_input("Case sensitive? [Y]/[N] " ) #default case insensitive
 
@@ -17,15 +18,26 @@ def search():
     if case in ['N', 'n']:
         for line in search:
             if phrase.lower() in line.lower():
-            #if phrase == line:
+                results=line+results
                 print line
     else:
         for line in search:
             if phrase in line:
-            #if phrase == line:
+                results=line+results
                 print line
 
-    search.close()
+    again = raw_input("Search the results? ")
+    if again in ['Y', 'y']:
+        research(results)
+    else:
+        search.close()
 
-    #hmm looks case sensitive
+def research(results):
+    print "results = %s" % results #remove later
+    phrase = raw_input("Enter Search Query ")
+    for line in results:
+        print 'lower phrase: %s    lower line: %s  ' %(phrase.lower(),line.lower())
+        if phrase.lower() in line.lower():
+            print line
+
     #maybe add search the search

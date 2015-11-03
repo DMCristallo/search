@@ -3,6 +3,7 @@ import index
 import search
 import os
 import sys
+import shutil
 
 print "Drives detected: %s" % (avail.get_available_drives())
 
@@ -12,7 +13,9 @@ loc2= avail.get_available_drives()
 if os.path.exists("D:\\index") == False:
     os.mkdir("D:\\index")
 
-if len(sys.argv)>=2: #command line options
+arglen=len(sys.argv)
+
+if arglen>=2: #command line options
     arg1 = sys.argv[1]
     if arg1=='s':
         search.search()
@@ -23,6 +26,17 @@ if len(sys.argv)>=2: #command line options
         index.drive(sys.argv[2])
         print "Complete"
         quit()
+    if arg1=='b':#backup option
+        if arglen == 2:
+            print "\nBacking up... \n"
+            shutil.copyfile("D:/index/index", "D:/index/index.bak")
+            quit()
+        else:
+            print "\nRestoring... \n"
+            shutil.copyfile("D:/index/index.bak", "D:/index/index")
+            quit()
+    else:
+        pass
 
     #maybe add clean up for instances run using commands.
 
